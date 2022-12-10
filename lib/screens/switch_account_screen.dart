@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class SwitchAccountScreen extends StatelessWidget {
@@ -11,17 +13,95 @@ class SwitchAccountScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/switch_account_background.png'),
-                    fit: BoxFit.cover,
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image:
+                            AssetImage('images/switch_account_background.png'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    top: 180,
+                    child: ClipRRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 3,
+                          sigmaY: 3,
+                        ),
+                        child: Container(
+                          width: 340,
+                          height: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
+                            ),
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color.fromRGBO(255, 255, 255, 0.5), //
+                                Color.fromRGBO(255, 255, 255, 0.2),
+                              ],
+                            ),
+                          ),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 32),
+                              Container(
+                                width: 129,
+                                height: 129,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage('images/phototest.jpg'),
+                                  ),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(15),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Text(
+                                'MehrdadMoradi001',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                              SizedBox(height: 20),
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Confirm'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xffF35383),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Text(
+                                'switch account',
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 132.0, bottom: 63.0),
+              padding: EdgeInsets.only(top: 60.0, bottom: 40.0),
               child: Text(
                 'dont have an account?',
                 style: TextStyle(color: Colors.white, fontSize: 20),
