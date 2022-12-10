@@ -25,6 +25,7 @@ class SwitchAccountScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   Positioned(
                     top: 180,
                     child: ClipRRect(
