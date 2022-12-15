@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/screens/switch_account_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class Application extends StatelessWidget {
             color: Colors.white
           ),
         ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(      //
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xffF35383),
             shape: RoundedRectangleBorder(
@@ -33,7 +34,7 @@ class Application extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: SwitchAccountScreen(),
+      home: LoginScreen(),
     );
   }
 }
