@@ -19,10 +19,10 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
-          alignment: AlignmentDirectional.bottomCenter,  //
+          alignment: AlignmentDirectional.bottomCenter, //
           children: [
             _getImageContainer(),
-            _getContainer(),
+            _getContainerBox(),
           ],
         ),
       ),
@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _getContainer() {
+  Widget _getContainerBox() {
     return Column(
       children: [
         Expanded(child: Container()),
@@ -59,7 +59,25 @@ class LoginScreen extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              color: Colors.red,
+              color: Color(0xff1C1F2E),
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: 50,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Sing in to ',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
+                    ),
+                    Image(
+                      image: AssetImage('images/mood.png'),
+                    ),
+                  ],
+                )
+              ],
             ),
           ),
         ),
