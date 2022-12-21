@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,23 +83,30 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: 34,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 44),
+                  child: TextField(
+                    focusNode: myFocusNode,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(15),
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                          fontFamily: 'GM', fontSize: 18, color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                        borderSide:
+                            BorderSide(color: Color(0xffC5C5C5), width: 3.0), //
                       ),
-                      borderSide:
-                          BorderSide(color: Color(0xffC5C5C5), width: 3.0),  //
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 3,
-                        color: Color(0xffF35383),
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xffF35383),
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
                       ),
                     ),
                   ),
