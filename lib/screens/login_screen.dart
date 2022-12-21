@@ -63,7 +63,9 @@ class LoginScreen extends StatelessWidget {
             ),
             child: Column(
               children: [
-                SizedBox(height: 50,),
+                SizedBox(
+                  height: 50,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +78,31 @@ class LoginScreen extends StatelessWidget {
                       image: AssetImage('images/mood.png'),
                     ),
                   ],
-                )
+                ),
+                SizedBox(
+                  height: 34,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                      borderSide:
+                          BorderSide(color: Color(0xffC5C5C5), width: 3.0),  //
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        width: 3,
+                        color: Color(0xffF35383),
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
