@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  FocusNode negahban1 = FocusNode();
+  FocusNode negahban2 = FocusNode();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    negahban1.addListener(() {
+      setState(() {
+
+      });
+    });
+    negahban2.addListener(() {
+      setState(() {
+
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +109,14 @@ class LoginScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 44),
                   child: TextField(
-                    focusNode: myFocusNode,
+                    focusNode: negahban1,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.all(15),
                       labelText: 'Email',
                       labelStyle: TextStyle(
-                          fontFamily: 'GM', fontSize: 18, color: Colors.white),
+                          fontFamily: 'GM',
+                          fontSize: 18,
+                          color: negahban1.hasFocus ? Color(0xffF35383) : Colors.white),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
@@ -111,6 +136,37 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 32),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 44),
+                  child: TextField(
+                    focusNode: negahban2,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(15),
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                          fontFamily: 'GM',
+                          fontSize: 18,
+                          color: negahban2.hasFocus ? Color(0xffF35383) : Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                        borderSide:
+                        BorderSide(color: Color(0xffC5C5C5), width: 3.0), //
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          width: 3,
+                          color: Color(0xffF35383),
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
