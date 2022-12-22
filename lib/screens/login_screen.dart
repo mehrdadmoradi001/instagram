@@ -7,7 +7,7 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {   //
   FocusNode negahban1 = FocusNode();
   FocusNode negahban2 = FocusNode();
 
@@ -174,4 +174,12 @@ class _LoginScreenState extends State<LoginScreen> {
       ],
     );
   }
+
+  @override
+  void dispose() {
+    negahban1.dispose();
+    negahban2.dispose();
+    super.dispose();
+  }
+
 }
