@@ -8,6 +8,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: deepColor,
+        title: Container(
+          width: 128,
+          height: 24,
+          child: Image.asset('images/moodinger_logo.png'),
+        ),
+        elevation: 0,
+        actions: [
+          Container(
+            width: 24,
+            height: 24,
+            child: Image.asset('images/icon_direct.png'),
+            margin: EdgeInsets.only(right: 18),
+          ),
+        ],
+      ),
       backgroundColor: deepColor,
       body: SafeArea(
         child: Center(
@@ -19,23 +36,23 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getStoryBox() {
     return DottedBorder(
-          borderType: BorderType.RRect,
-          radius: Radius.circular(17),
-          padding: EdgeInsets.all(4),
-          color: pinkColor,
-          dashPattern: [50, 10],
-          strokeWidth: 2,
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(
-              Radius.circular(15),
-            ),
-            child: Container(
-              height: 58,
-              width: 58,
-              child: Image.asset('images/profile.png'),
-            ),
-          ),
-        );
+      borderType: BorderType.RRect,
+      radius: Radius.circular(17),
+      padding: EdgeInsets.all(4),
+      color: pinkColor,
+      dashPattern: [50, 10],
+      strokeWidth: 2,
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
+        child: Container(
+          height: 58,
+          width: 58,
+          child: Image.asset('images/phototest.jpg'),
+        ),
+      ),
+    );
   }
 
   Widget _getAddStoryBox() {
