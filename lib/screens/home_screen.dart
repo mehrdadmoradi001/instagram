@@ -28,7 +28,40 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: deepColor,
       body: SafeArea(
         child: Center(
-          child: _getStoryBox(),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18),
+            child: Row(
+              children: [
+                _getStoryBox(),
+                Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'MehrdadMoradi001',
+                        style: TextStyle(
+                          fontFamily: 'GB',
+                          color: whiteColor,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Text(
+                        'مهرداد مرادی برنامه نویس موبایل',
+                        style: TextStyle(
+                          fontFamily: 'SM',
+                          color: whiteColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Spacer(),
+                Image.asset('images/icon_menu.png'),
+              ],
+            ),
+          ),
         ),
       ),
     );
@@ -40,15 +73,15 @@ class HomeScreen extends StatelessWidget {
       radius: Radius.circular(17),
       padding: EdgeInsets.all(4),
       color: pinkColor,
-      dashPattern: [50, 10],
+      dashPattern: [40, 10],
       strokeWidth: 2,
       child: ClipRRect(
         borderRadius: BorderRadius.all(
           Radius.circular(15),
         ),
         child: Container(
-          height: 58,
-          width: 58,
+          height: 38,
+          width: 38,
           child: Image.asset('images/phototest.jpg'),
         ),
       ),
