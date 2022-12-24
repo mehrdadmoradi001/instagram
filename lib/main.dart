@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/data/constants/constant_colors.dart';
+import 'package:instagram/screens/home_screen.dart';
 import 'package:instagram/screens/login_screen.dart';
 import 'package:instagram/screens/switch_account_screen.dart';
 
@@ -17,12 +19,12 @@ class Application extends StatelessWidget {
           headline4: TextStyle(
             fontFamily: 'GB',
             fontSize: 16,
-            color: Colors.white
+            color: whiteColor
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(      //
           style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xffF35383),
+            backgroundColor: pinkColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
@@ -34,7 +36,7 @@ class Application extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: HomeScreen(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/data/constants/constant_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {   //
           end: Alignment.bottomCenter,
           colors: [
             Color(0xff323A99),
-            Color(0xffF98BFC),
+            blueColor,
           ],
         ),
       ),
@@ -127,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {   //
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           width: 3,
-                          color: Color(0xffF35383),
+                          color: pinkColor,
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
@@ -147,18 +148,18 @@ class _LoginScreenState extends State<LoginScreen> {   //
                       labelStyle: TextStyle(
                           fontFamily: 'GM',
                           fontSize: 18,
-                          color: negahban2.hasFocus ? Color(0xffF35383) : Colors.white),
+                          color: negahban2.hasFocus ? pinkColor : Colors.white),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
                         ),
                         borderSide:
-                        BorderSide(color: Color(0xffC5C5C5), width: 3.0), //
+                        BorderSide(color: grayColor, width: 3.0), //
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           width: 3,
-                          color: Color(0xffF35383),
+                          color: pinkColor,
                         ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
