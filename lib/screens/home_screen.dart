@@ -30,15 +30,12 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: deepColor,
       body: SafeArea(
         child: Center(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) => Column(
-              children: [
-                SizedBox(height: 34),
-                _getHeaderPost(),
-                SizedBox(height: 24),
-                _getPostContent(),
-              ],
+          child: Container(
+            height: 64,
+            child: ListView.builder(
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => _getStoryListBox(),
             ),
           ),
         ),
@@ -46,7 +43,22 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  //----------------------------------------------------------------------------------------------------
+  //------------------------------------------------------------------------------------
+
+  Widget _getPostList() {
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) => Column(
+        children: [
+          SizedBox(height: 34),
+          _getHeaderPost(),
+          SizedBox(height: 24),
+          _getPostContent(),
+        ],
+      ),
+    );
+  }
+
   Widget _getPostContent() {
     return Container(
       width: 394,
@@ -184,6 +196,27 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           height: 38,
           width: 38,
+          child: Image.asset('images/phototest.jpg'),
+        ),
+      ),
+    );
+  }
+
+  Widget _getStoryListBox() {
+    return DottedBorder(
+      borderType: BorderType.RRect,
+      radius: Radius.circular(17),
+      padding: EdgeInsets.all(4),
+      color: pinkColor,
+      dashPattern: [20, 10],
+      strokeWidth: 2,
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
+        child: Container(
+          height: 58,
+          width: 58,
           child: Image.asset('images/phototest.jpg'),
         ),
       ),
