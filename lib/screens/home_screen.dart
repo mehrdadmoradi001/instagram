@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:instagram/data/constants/constant_colors.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -48,10 +50,63 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   bottom: 15,
-                  child: Container(
-                    width: 340,
-                    height: 46,
-                    color: pinkColor,
+                  child: ClipRRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                      child: Container(
+                        width: 340,
+                        height: 46,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          gradient: LinearGradient(
+                            colors: [
+                              Color.fromRGBO(255, 255, 255, 0.5),
+                              Color.fromRGBO(255, 255, 255, 0.2),
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(width: 15),
+                                Image.asset('images/icon_hart.png'),
+                                SizedBox(width: 6),
+                                Text(
+                                  '2.5 k',
+                                  style: TextStyle(
+                                    fontFamily: 'GB',
+                                    fontSize: 14,
+                                    color: whiteColor,
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(width: 42),
+                            Row(
+                              children: [
+                                Image.asset('images/icon_comments.png'),
+                                SizedBox(width: 6),
+                                Text(
+                                  '1.5 k',
+                                  style: TextStyle(
+                                    fontFamily: 'GB',
+                                    fontSize: 14,
+                                    color: whiteColor,
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(width: 42),
+                            Image.asset('images/icon_share.png'),
+                            SizedBox(width: 42),
+                            Image.asset('images/icon_save.png'),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
