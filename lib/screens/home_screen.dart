@@ -28,41 +28,73 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: deepColor,
       body: SafeArea(
         child: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18),
-            child: Row(
+          child: Container(
+            width: 394,
+            height: 440,
+            child: Stack(
+              alignment: AlignmentDirectional.center,
               children: [
-                _getStoryBox(),
-                Padding(
-                  padding: EdgeInsets.only(left: 12),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'MehrdadMoradi001',
-                        style: TextStyle(
-                          fontFamily: 'GB',
-                          color: whiteColor,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Text(
-                        'مهرداد مرادی برنامه نویس موبایل',
-                        style: TextStyle(
-                          fontFamily: 'SM',
-                          color: whiteColor,
-                        ),
-                      ),
-                    ],
+                Positioned(
+                  top: 0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset('images/post_cover.png'),
                   ),
                 ),
-                Spacer(),
-                Image.asset('images/icon_menu.png'),
+                Positioned(
+                  top: 15,
+                  right: 15,
+                  child: Image.asset('images/icon_video.png'),
+                ),
+                Positioned(
+                  bottom: 15,
+                  child: Container(
+                    width: 340,
+                    height: 46,
+                    color: pinkColor,
+                  ),
+                ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _getHeaderPost() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 18),
+      child: Row(
+        children: [
+          _getStoryBox(),
+          Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'MehrdadMoradi001',
+                  style: TextStyle(
+                    fontFamily: 'GB',
+                    color: whiteColor,
+                    fontSize: 12,
+                  ),
+                ),
+                Text(
+                  'مهرداد مرادی برنامه نویس موبایل',
+                  style: TextStyle(
+                    fontFamily: 'SM',
+                    color: whiteColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Spacer(),
+          Image.asset('images/icon_menu.png'),
+        ],
       ),
     );
   }
