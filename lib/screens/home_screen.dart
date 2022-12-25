@@ -30,89 +30,104 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: deepColor,
       body: SafeArea(
         child: Center(
-          child: Container(
-            width: 394,
-            height: 440,
-            child: Stack(
-              alignment: AlignmentDirectional.center,
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (context, index) => Column(
               children: [
-                Positioned(
-                  top: 0,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: Image.asset('images/post_cover.png'),
-                  ),
-                ),
-                Positioned(
-                  top: 15,
-                  right: 15,
-                  child: Image.asset('images/icon_video.png'),
-                ),
-                Positioned(
-                  bottom: 15,
-                  child: ClipRRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-                      child: Container(
-                        width: 340,
-                        height: 46,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: LinearGradient(
-                            colors: [
-                              Color.fromRGBO(255, 255, 255, 0.5),
-                              Color.fromRGBO(255, 255, 255, 0.2),
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(width: 15),
-                                Image.asset('images/icon_hart.png'),
-                                SizedBox(width: 6),
-                                Text(
-                                  '2.5 k',
-                                  style: TextStyle(
-                                    fontFamily: 'GB',
-                                    fontSize: 14,
-                                    color: whiteColor,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(width: 42),
-                            Row(
-                              children: [
-                                Image.asset('images/icon_comments.png'),
-                                SizedBox(width: 6),
-                                Text(
-                                  '1.5 k',
-                                  style: TextStyle(
-                                    fontFamily: 'GB',
-                                    fontSize: 14,
-                                    color: whiteColor,
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(width: 42),
-                            Image.asset('images/icon_share.png'),
-                            SizedBox(width: 42),
-                            Image.asset('images/icon_save.png'),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                SizedBox(height: 34),
+                _getHeaderPost(),
+                SizedBox(height: 24),
+                _getPostContent(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  //----------------------------------------------------------------------------------------------------
+  Widget _getPostContent() {
+    return Container(
+      width: 394,
+      height: 440,
+      child: Stack(
+        alignment: AlignmentDirectional.center,
+        children: [
+          Positioned(
+            top: 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.asset('images/post_cover.png'),
+            ),
+          ),
+          Positioned(
+            top: 15,
+            right: 15,
+            child: Image.asset('images/icon_video.png'),
+          ),
+          Positioned(
+            bottom: 15,
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                child: Container(
+                  width: 340,
+                  height: 46,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color.fromRGBO(255, 255, 255, 0.5),
+                        Color.fromRGBO(255, 255, 255, 0.2),
+                      ],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(width: 15),
+                          Image.asset('images/icon_hart.png'),
+                          SizedBox(width: 6),
+                          Text(
+                            '2.5 k',
+                            style: TextStyle(
+                              fontFamily: 'GB',
+                              fontSize: 14,
+                              color: whiteColor,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(width: 42),
+                      Row(
+                        children: [
+                          Image.asset('images/icon_comments.png'),
+                          SizedBox(width: 6),
+                          Text(
+                            '1.5 k',
+                            style: TextStyle(
+                              fontFamily: 'GB',
+                              fontSize: 14,
+                              color: whiteColor,
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(width: 42),
+                      Image.asset('images/icon_share.png'),
+                      SizedBox(width: 42),
+                      Image.asset('images/icon_save.png'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -160,7 +175,7 @@ class HomeScreen extends StatelessWidget {
       radius: Radius.circular(17),
       padding: EdgeInsets.all(4),
       color: pinkColor,
-      dashPattern: [40, 10],
+      dashPattern: [20, 10],
       strokeWidth: 2,
       child: ClipRRect(
         borderRadius: BorderRadius.all(
