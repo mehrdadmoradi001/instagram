@@ -29,15 +29,20 @@ class HomeScreen extends StatelessWidget {
       ),
       backgroundColor: deepColor,
       body: SafeArea(
-        child: Center(
-          child: Container(
-            height: 120,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>
-                  index == 0 ? _getAddStoryBox() : _getStoryListBox(),
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 120,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) =>
+                      index == 0 ? _getAddStoryBox() : _getStoryListBox(), //
+                ),
+              ),
+              _getPostList()
+            ],
           ),
         ),
       ),
@@ -48,6 +53,8 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getPostList() {
     return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),  //
       itemCount: 10,
       itemBuilder: (context, index) => Column(
         children: [
