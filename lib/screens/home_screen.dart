@@ -31,11 +31,12 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Container(
-            height: 64,
+            height: 120,
             child: ListView.builder(
               itemCount: 10,
               scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => _getStoryListBox(),
+              itemBuilder: (context, index) =>
+                  index == 0 ? _getAddStoryBox() : _getStoryListBox(),
             ),
           ),
         ),
@@ -203,45 +204,69 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _getStoryListBox() {
-    return DottedBorder(
-      borderType: BorderType.RRect,
-      radius: Radius.circular(17),
-      padding: EdgeInsets.all(4),
-      color: pinkColor,
-      dashPattern: [20, 10],
-      strokeWidth: 2,
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(
-          Radius.circular(15),
-        ),
-        child: Container(
-          height: 58,
-          width: 58,
-          child: Image.asset('images/phototest.jpg'),
-        ),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      child: Column(
+        children: [
+          DottedBorder(
+            borderType: BorderType.RRect,
+            radius: Radius.circular(17),
+            padding: EdgeInsets.all(4),
+            color: pinkColor,
+            dashPattern: [20, 10],
+            strokeWidth: 2,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
+              ),
+              child: Container(
+                height: 58,
+                width: 58,
+                child: Image.asset('images/phototest.jpg'),
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Text(
+            'Test',
+            style: TextStyle(color: whiteColor),
+          ),
+        ],
       ),
     );
   }
 
   Widget _getAddStoryBox() {
     return Container(
-      width: 64,
-      height: 64,
-      decoration: BoxDecoration(
-        color: whiteColor,
-        borderRadius: BorderRadius.circular(17),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(2),
-        child: Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            color: deepColor,
-            borderRadius: BorderRadius.circular(15),
+      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      child: Column(
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.circular(17),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(2),
+              child: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: deepColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Image.asset('images/icon_plus.png'),
+              ),
+            ),
           ),
-          child: Image.asset('images/icon_plus.png'),
-        ),
+          SizedBox(height: 10),
+          Text(
+            'Test',
+            style: TextStyle(color: whiteColor),
+          )
+        ],
       ),
     );
   }
