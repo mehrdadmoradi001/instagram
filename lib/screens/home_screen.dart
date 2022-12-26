@@ -32,6 +32,20 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext) => Container(  //
+                      height: 300,
+                      child: Center(
+                        child: Text('MehrdadMoradi'),
+                      ),
+                    ),
+                  );
+                },
+                child: Text('Open BottomSheet'),
+              ),
               SizedBox(
                 height: 120,
                 child: ListView.builder(
@@ -49,13 +63,12 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-
   //------------------------------------------------------------------------------------
 
   Widget _getPostList() {
     return ListView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),  //
+      physics: NeverScrollableScrollPhysics(), //
       itemCount: 10,
       itemBuilder: (context, index) => Column(
         children: [
