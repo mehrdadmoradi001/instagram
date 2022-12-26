@@ -35,6 +35,8 @@ class HomeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   showModalBottomSheet(
+                    barrierColor: Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     context: context,
                     builder: (BuildContext) => Container(  //
                       height: 300,
