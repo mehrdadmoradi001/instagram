@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:instagram/data/constants/constant_colors.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:instagram/screens/share_bottomsheet.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -38,12 +39,7 @@ class HomeScreen extends StatelessWidget {
                     barrierColor: Colors.transparent,
                     backgroundColor: Colors.transparent,
                     context: context,
-                    builder: (BuildContext) => Container(  //
-                      height: 300,
-                      child: Center(
-                        child: Text('MehrdadMoradi'),
-                      ),
-                    ),
+                    builder: (BuildContext) => ShareBottomSheet(),
                   );
                 },
                 child: Text('Open BottomSheet'),
