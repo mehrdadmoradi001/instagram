@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ShareBottomSheet extends StatelessWidget {
-  const ShareBottomSheet({Key? key}) : super(key: key);
+  const ShareBottomSheet({this.controller,Key? key}) : super(key: key);
+  final ScrollController? controller;
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +18,8 @@ class ShareBottomSheet extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(40),
           child: Container(
-            color: Color.fromRGBO(255, 255, 255, 0.09),
-            height: 300,
+            color: Color.fromRGBO(255, 255, 255, 0.001),
+            //height: 300,
             child: _getContent(),
           ),
         ),
@@ -28,12 +29,15 @@ class ShareBottomSheet extends StatelessWidget {
 
   GridView _getContent() {
     return GridView.builder(
-      itemCount: 30,
+      controller: controller,
+      itemCount: 100,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         mainAxisSpacing: 20,
         crossAxisSpacing: 20
       ),
+
+      
       itemBuilder: (BuildContext context, int index) => Container(  //
         child: Container(
           color: Colors.yellow,
