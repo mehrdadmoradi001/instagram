@@ -30,44 +30,65 @@ class HomeScreen extends StatelessWidget {
       ),
       backgroundColor: deepColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                    barrierColor: Colors.transparent,
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    isScrollControlled: true,
-                    builder: (BuildContext) => DraggableScrollableSheet(
-                      initialChildSize: 0.5,
-                      minChildSize: 0.3,
-                      maxChildSize: 0.7,
-                      builder: (context, controller) => ShareBottomSheet(controller: controller,),
-                    ),
-                  );
-                },
-                child: Text('Open BottomSheet'),
-              ),
-              SizedBox(
-                height: 120,
-                child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) =>
-                      index == 0 ? _getAddStoryBox() : _getStoryListBox(), //
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+                child: ElevatedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      barrierColor: Colors.transparent,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (BuildContext context) => DraggableScrollableSheet( //
+                        builder: (context, controller) => ShareBottomSheet(
+                          //
+                          controller: controller,
+                        ),
+                        initialChildSize: 0.5,
+                        minChildSize: 0.3,
+                        maxChildSize: 0.7,
+                      ),
+                    );
+                  },
+                  child: Text('Open BottomSheet'),
                 ),
+            ),
+            SliverToBoxAdapter(
+              child: _getStoryList(),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => Column(
+                  children: [
+                    SizedBox(height: 34),
+                    _getHeaderPost(),
+                    SizedBox(height: 24),
+                    _getPostContent(),
+                  ],
+                ),
+                childCount: 10,
               ),
-              _getPostList()
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   //------------------------------------------------------------------------------------
+
+  Widget _getStoryList() {
+    return Container(
+      height: 120,
+      child: ListView.builder(
+        itemCount: 10,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) =>
+            index == 0 ? _getAddStoryBox() : _getStoryListBox(), //
+      ),
+    );
+  }
 
   Widget _getPostList() {
     return ListView.builder(
