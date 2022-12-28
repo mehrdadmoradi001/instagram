@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ShareBottomSheet extends StatelessWidget {
-  const ShareBottomSheet({this.controller,Key? key}) : super(key: key);
+  const ShareBottomSheet({this.controller, Key? key}) : super(key: key);
   final ScrollController? controller;
 
   @override
@@ -27,22 +27,39 @@ class ShareBottomSheet extends StatelessWidget {
     );
   }
 
-  GridView _getContent() {
-    return GridView.builder(
+  Widget _getContent() {
+    // return GridView.builder(
+    //   controller: controller,
+    //   itemCount: 100,
+    //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    //     crossAxisCount: 4,
+    //     mainAxisSpacing: 20,
+    //     crossAxisSpacing: 20
+    //   ),
+    //
+    //
+    //   itemBuilder: (BuildContext context, int index) => Container(  //
+    //     child: Container(
+    //       color: Colors.yellow,
+    //     ),
+    //   ),
+    // );
+    return CustomScrollView(
       controller: controller,
-      itemCount: 100,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 4,
-        mainAxisSpacing: 20,
-        crossAxisSpacing: 20
-      ),
-
-      
-      itemBuilder: (BuildContext context, int index) => Container(  //
-        child: Container(
-          color: Colors.yellow,
+      slivers: [
+        SliverGrid(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => Container(
+              color: Colors.yellow,
+            ),
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20
+          ),
         ),
-      ),
+      ],
     );
   }
 }
