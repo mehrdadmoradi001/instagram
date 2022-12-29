@@ -33,14 +33,18 @@ class HomeScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-                child: ElevatedButton(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      barrierColor: Colors.transparent,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (BuildContext context) => DraggableScrollableSheet( //
+              child: ElevatedButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    barrierColor: Colors.transparent,
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) => Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: DraggableScrollableSheet(
+                        //
                         builder: (context, controller) => ShareBottomSheet(
                           //
                           controller: controller,
@@ -49,10 +53,11 @@ class HomeScreen extends StatelessWidget {
                         minChildSize: 0.3,
                         maxChildSize: 0.7,
                       ),
-                    );
-                  },
-                  child: Text('Open BottomSheet'),
-                ),
+                    ),
+                  );
+                },
+                child: Text('Open BottomSheet'),
+              ),
             ),
             SliverToBoxAdapter(
               child: _getStoryList(),

@@ -88,7 +88,15 @@ class ShareBottomSheet extends StatelessWidget {
                     children: [
                       Image.asset('images/icon_search.png'),
                       SizedBox(width: 8),
-                      Expanded(child: TextField()),
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Search User',
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -99,12 +107,16 @@ class ShareBottomSheet extends StatelessWidget {
         ),
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
+            childCount: 100,
             (context, index) => Container(
               color: Colors.yellow,
             ),
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4, crossAxisSpacing: 20, mainAxisSpacing: 20),
+            crossAxisCount: 4,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+          ),
         ),
       ],
     );
