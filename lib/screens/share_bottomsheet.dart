@@ -108,16 +108,42 @@ class ShareBottomSheet extends StatelessWidget {
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
             childCount: 100,
-            (context, index) => Container(
-              color: Colors.yellow,
-            ),
+            (context, index) => _getItemGrid(),
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            mainAxisExtent: 110,
             crossAxisCount: 4,
             crossAxisSpacing: 20,
-            mainAxisSpacing: 20,
+            mainAxisSpacing: 10,
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _getItemGrid() {
+    return Column(
+      children: [
+        Container(
+          width: 60,
+          height: 60,
+          child: ClipRRect(
+            child: Image.asset('images/phototest.jpg'),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+        Text(
+          'Mehrdad Moradi',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontFamily: 'GB',
+            fontSize: 12,
+            color: whiteColor,
+          ),
+        )
       ],
     );
   }
