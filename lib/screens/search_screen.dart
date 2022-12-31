@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/data/constants/constant_colors.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -12,14 +13,42 @@ class SearchScreen extends StatelessWidget {
         child: Column(
           children: [
             _getSearchScreen(),
-            _getStoryList(),
+            _getCategoryList(),
+            SizedBox(height: 20),
+             _getStaggeredGridView(),
           ],
         ),
       ),
     );
   }
 
-  Widget _getStoryList() {
+  Widget _getStaggeredGridView() {
+    return Container(
+      height: 500,
+      width: 1200,
+      child: GridView.custom(
+        gridDelegate: SliverQuiltedGridDelegate(
+          crossAxisCount: 4,
+          mainAxisSpacing: 5,
+          crossAxisSpacing: 5,
+          repeatPattern: QuiltedGridRepeatPattern.inverted,
+          pattern: [
+            QuiltedGridTile(2, 2),
+            QuiltedGridTile(1, 1),
+            QuiltedGridTile(1, 1),
+            QuiltedGridTile(1, 2),
+          ],
+        ),
+        childrenDelegate: SliverChildBuilderDelegate(
+          (context, index) => Container(
+            color: Colors.red,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCategoryList() {
     return Container(
       height: 23,
       margin: EdgeInsets.only(top: 20, bottom: 20),
