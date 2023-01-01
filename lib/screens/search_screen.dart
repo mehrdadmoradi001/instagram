@@ -12,10 +12,10 @@ class SearchScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            _getSearchScreen(),
+            _getSearchBox(),
             _getCategoryList(),
             SizedBox(height: 20),
-             _getStaggeredGridView(),
+            _getStaggeredGridView(),
           ],
         ),
       ),
@@ -24,24 +24,34 @@ class SearchScreen extends StatelessWidget {
 
   Widget _getStaggeredGridView() {
     return Container(
-      height: 500,
+      height: 600,
       width: 1200,
       child: GridView.custom(
         gridDelegate: SliverQuiltedGridDelegate(
-          crossAxisCount: 4,
-          mainAxisSpacing: 5,
-          crossAxisSpacing: 5,
+          crossAxisCount: 3,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
           repeatPattern: QuiltedGridRepeatPattern.inverted,
           pattern: [
+            QuiltedGridTile(2, 1),
             QuiltedGridTile(2, 2),
             QuiltedGridTile(1, 1),
             QuiltedGridTile(1, 1),
-            QuiltedGridTile(1, 2),
+            QuiltedGridTile(1, 1),
           ],
         ),
-        childrenDelegate: SliverChildBuilderDelegate(
-          (context, index) => Container(
-            color: Colors.red,
+        childrenDelegate: SliverChildBuilderDelegate( //
+          childCount: 10,
+          (context, index) => ClipRRect(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: Image.asset(
+                'images/item$index.png',
+              ),
+            ),
           ),
         ),
       ),
@@ -81,7 +91,7 @@ class SearchScreen extends StatelessWidget {
     );
   }
 
-  Widget _getSearchScreen() {
+  Widget _getSearchBox() {
     return Container(
       height: 46,
       margin: EdgeInsets.only(left: 18, right: 18, top: 12),
