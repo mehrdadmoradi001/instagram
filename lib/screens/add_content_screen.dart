@@ -12,7 +12,29 @@ class AddContentScreen extends StatelessWidget {
         child: CustomScrollView(
           slivers: [
             _getHeaderSection(),
+            _getSelectedImageContainer(),
           ],
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _getSelectedImageContainer() {
+    return SliverToBoxAdapter(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 18),
+        width: double.infinity,
+        height: 394,
+        child: ClipRRect(
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: Image.asset(
+              'images/item0.png',
+            ),
+          ),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15),
+          ),
         ),
       ),
     );
