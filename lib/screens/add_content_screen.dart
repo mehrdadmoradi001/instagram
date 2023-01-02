@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/data/constants/constant_colors.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class AddContentScreen extends StatelessWidget {
   const AddContentScreen({Key? key}) : super(key: key);
@@ -9,17 +10,55 @@ class AddContentScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: deepColor,
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            _getHeaderSection(),
-            _getSelectedImageContainer(),
-          ],
-        ),
+        child: _getWholeScrollingPart(),
       ),
     );
   }
 
-  SliverToBoxAdapter _getSelectedImageContainer() {
+  Widget _getWholeScrollingPart() {
+    return CustomScrollView(
+        slivers: [
+          _getHeaderSection(),
+          _getSelectedImageContainer(),
+          _getGalleryImagesScrollGrid(),
+        ],
+      );
+  }
+
+  Widget _getGalleryImagesScrollGrid() {
+    return SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 18,vertical: 10),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                childCount: 9,
+                (context, index) => ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.asset(
+                      'images/item$index.png',
+                    ),
+                  ),
+                ),
+              ),
+              gridDelegate: SliverQuiltedGridDelegate(
+                crossAxisCount: 3,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5,
+                repeatPattern: QuiltedGridRepeatPattern.mirrored,
+                pattern: [
+                  QuiltedGridTile(1, 1),
+                  QuiltedGridTile(1, 1),
+                  QuiltedGridTile(1, 1),
+                ],
+              ),
+            ),
+          );
+  }
+
+  Widget _getSelectedImageContainer() {
     return SliverToBoxAdapter(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 18),
@@ -29,7 +68,7 @@ class AddContentScreen extends StatelessWidget {
           child: FittedBox(
             fit: BoxFit.cover,
             child: Image.asset(
-              'images/item0.png',
+              'images/item9.png',
             ),
           ),
           borderRadius: BorderRadius.all(
