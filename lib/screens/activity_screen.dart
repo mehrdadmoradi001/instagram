@@ -22,25 +22,59 @@ class _ActivityScreenState extends State<ActivityScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: deepColor,
       body: SafeArea(
-        child: Container(
-          color: deepColor,
-          height: 70,
-          child: TabBar(
-            controller: _tabController,
-            labelStyle: TextStyle(fontSize: 16, fontFamily: 'GB'),
-            indicatorWeight: 4,
-            indicatorColor: pinkColor,
-            indicatorPadding: EdgeInsets.symmetric(horizontal: 20), //
-            tabs: [
-              Tab(
-                text: 'Following',
+        child: Column(
+          children: [
+            Container(
+              color: deepColor,
+              height: 70,
+              child: TabBar(
+                controller: _tabController,
+                labelStyle: TextStyle(fontSize: 16, fontFamily: 'GB'),
+                indicatorWeight: 4,
+                indicatorColor: pinkColor,
+                indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
+                //
+                //
+                tabs: [
+                  Tab(
+                    text: 'Following',
+                  ),
+                  Tab(
+                    text: 'You',
+                  ),
+                ],
               ),
-              Tab(
-                text: 'You',
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  CustomScrollView(
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) => Text('Following'),
+                          childCount: 100,
+                        ),
+                      ),
+                    ],
+                  ),
+                  CustomScrollView(
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) => Text('You'),
+                          childCount: 100,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
