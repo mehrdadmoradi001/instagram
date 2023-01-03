@@ -144,17 +144,30 @@ class _ActivityScreenState extends State<ActivityScreen>
             ],
           ),
           Spacer(),
-          OutlinedButton(
+          ElevatedButton(
             onPressed: () {},
-            child: Text(
-              'Message',
-              style:
-                  TextStyle(fontSize: 12, fontFamily: 'GB', color: grayColor),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: pinkColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+              ),
             ),
-            style: OutlinedButton.styleFrom(
-              side: BorderSide(color: grayColor, width: 2),
+            child: Text(
+              'Follow',
+              style: TextStyle(fontSize: 16, fontFamily: 'GB'),
             ),
           ),
+          // OutlinedButton(
+          //   onPressed: () {},
+          //   child: Text(
+          //     'Message',
+          //     style:
+          //         TextStyle(fontSize: 12, fontFamily: 'GB', color: grayColor),
+          //   ),
+          //   style: OutlinedButton.styleFrom(
+          //     side: BorderSide(color: grayColor, width: 2),
+          //   ),
+          // ),
           // SizedBox(
           //   width: 40,
           //   height: 40,
