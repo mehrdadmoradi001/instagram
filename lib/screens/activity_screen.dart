@@ -52,32 +52,69 @@ class _ActivityScreenState extends State<ActivityScreen>
               child: TabBarView(
                 controller: _tabController,
                 children: [
-                  CustomScrollView(
-                    slivers: [
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) => _getRow(ActivityStatus.likes),
-                          childCount: 100,
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomScrollView(
-                    slivers: [
-                      SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) => Text('You'),
-                          childCount: 100,
-                        ),
-                      ),
-                    ],
-                  ),
+                  _getSampleList(),
+                  _getSampleList(),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _getSampleList() {
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, top: 20),
+            child: Text(
+              'Today',
+              style:
+                  TextStyle(fontSize: 16, fontFamily: 'GB', color: whiteColor),
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => _getRow(ActivityStatus.followBack),
+            childCount: 3,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, top: 20),
+            child: Text(
+              'New',
+              style:
+                  TextStyle(fontSize: 16, fontFamily: 'GB', color: whiteColor),
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => _getRow(ActivityStatus.likes),
+            childCount: 2,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.only(left: 30, top: 20),
+            child: Text(
+              'Today',
+              style:
+                  TextStyle(fontSize: 16, fontFamily: 'GB', color: whiteColor),
+            ),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) => _getRow(ActivityStatus.following),
+            childCount: 10,
+          ),
+        ),
+      ],
     );
   }
 
