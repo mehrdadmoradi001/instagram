@@ -8,26 +8,53 @@ class UserProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: deepColor,
-      body: Center(
-        child: _getProfileHeader(),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, isScrolled) => [
+          SliverAppBar(
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(14),
+              child: Container(
+                height: 14,
+                decoration: BoxDecoration(
+                  color: deepColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+              ),
+            ),
+            expandedHeight: 200,
+            backgroundColor: deepColor,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Image.asset(
+                'images/item1.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        ],
+        body: Container(
+          color: Colors.red,
+        ),
       ),
     );
   }
 
   Widget _getProfileHeader() {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 18),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _getUserProfile(),
-            SizedBox(width: 15),
-            _getTextProfile(),
-            Spacer(),
-            Image.asset('images/icon_profile_edit.png'),
-          ],
-        ),
-      );
+      padding: EdgeInsets.symmetric(horizontal: 18),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _getUserProfile(),
+          SizedBox(width: 15),
+          _getTextProfile(),
+          Spacer(),
+          Image.asset('images/icon_profile_edit.png'),
+        ],
+      ),
+    );
   }
 
   Widget _getTextProfile() {
@@ -45,7 +72,7 @@ class UserProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 5),
             Text(
-              'd',
+              'MehrdadMoradi',
               style:
                   TextStyle(fontFamily: 'GB', color: whiteColor, fontSize: 16),
             ),
