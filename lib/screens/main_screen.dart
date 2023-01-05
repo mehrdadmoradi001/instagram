@@ -39,9 +39,14 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.ice_skating), label: 'Label4'),
         ],
       ),
-      body: Center(
-        child: Text('Mehrdad'),
-      ),
+      body: getLayout().elementAt(_selectedBottomNavigationBar),
     );
   }
+
+  List<Widget> getLayout()=> <Widget>[
+    Container(color: Colors.red,child: Center(child: TextField()),),
+    Container(color: Colors.blue,),
+    Container(color: Colors.amber,),
+    Container(color: Colors.green,),
+  ];
 }
