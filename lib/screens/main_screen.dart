@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/data/constants/constant_colors.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -20,28 +21,68 @@ class _MainScreenState extends State<MainScreen> {
             _selectedBottomNavigationBar = index;
           });
         },
-        selectedFontSize: 20,
-        selectedIconTheme: IconThemeData(color: Colors.red),
-        selectedItemColor: Colors.black,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-        //
-        unselectedFontSize: 12,
-        unselectedItemColor: Colors.white,
-        //
         showSelectedLabels: false,
         showUnselectedLabels: false,
-
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.green,
+        backgroundColor: deepColor,
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.ice_skating), label: 'Label1'), //
+            icon: Image.asset('images/icon_home.png'),
+            activeIcon: Image.asset('images/icon_active_home.png'),
+            label: 'Label1',
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.ice_skating), label: 'Label2'),
+              icon: Image.asset('images/icon_search_navigation.png'),
+              activeIcon: Image.asset('images/icon_search_navigation_active.png'),
+              label: 'Label2'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.ice_skating), label: 'Label3'),
+              icon: Image.asset('images/icon_add_navigation.png'),
+              activeIcon: Image.asset('images/icon_add_navigation_active.png'),
+              label: 'Label3'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.ice_skating), label: 'Label4'),
+              icon: Image.asset('images/icon_activity_navigation.png'),
+              activeIcon: Image.asset('images/icon_activity_navigation_active.png'),
+              label: 'Label4'),
+          BottomNavigationBarItem(
+              icon: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: grayColor),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(6),
+                  ),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.asset('images/phototest.jpg'),
+                  ),
+                ),
+              ),
+              activeIcon: Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2, color: grayColor),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(8),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(6),
+                  ),
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: Image.asset('images/phototest.jpg'),
+                  ),
+                ),
+              ),
+              label: 'Label5'),
         ],
       ),
       body: IndexedStack(
