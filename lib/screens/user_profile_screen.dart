@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:instagram/data/constants/constant_colors.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -8,53 +9,114 @@ class UserProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: deepColor,
-      body: NestedScrollView(
-        headerSliverBuilder: (context, isScrolled) => [
-          SliverAppBar(
-            //toolbarHeight: 100,
-            // pinned: true,
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 18, top: 18),
-                child: Icon(Icons.menu),
+      body: SafeArea(
+        child: DefaultTabController(
+          length: 2,
+          child: NestedScrollView(
+            headerSliverBuilder: (context, isScrolled) => [
+              SliverAppBar(
+                //toolbarHeight: 100,
+                // pinned: true,
+                actions: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 18, top: 18),
+                    child: Icon(Icons.menu),
+                  ),
+                ],
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(14),
+                  child: Container(
+                    height: 14,
+                    decoration: BoxDecoration(
+                      color: deepColor,
+                      borderRadius: BorderRadius.only(
+                        //
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                    ),
+                  ),
+                ),
+                expandedHeight: 100,
+                backgroundColor: deepColor,
+                flexibleSpace: FlexibleSpaceBar(
+                  background: Image.asset(
+                    'images/item1.png',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: _getProfileHeader(),
+              ),
+              SliverPersistentHeader(
+                delegate: TabBarViewDelegate(
+                  TabBar(
+                    indicatorWeight: 4,
+                    indicatorColor: pinkColor,
+                    indicatorPadding: EdgeInsets.only(left: 18,right: 18,bottom: 4),
+                    tabs: [
+                      Tab(
+                        icon: Image.asset('images/icon_tab_posts.png'),
+                      ),
+                      Tab(
+                        icon: Image.asset('images/icon_tab_bookmark.png'),
+                      )
+                    ],
+                  ),
+                ),
+                pinned: true,
+                floating: true,
               ),
             ],
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(14),
-              child: Container(
-                height: 14,
-                decoration: BoxDecoration(
-                  color: deepColor,
-                  borderRadius: BorderRadius.only(
-                    //
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
+            body: TabBarView(
+              children: [
+                _getCustomScrollView(),
+                _getCustomScrollView(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCustomScrollView() {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: EdgeInsets.only(top: 20,left: 18,right: 18), //
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              childCount: 20,
+              (context, index) => ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Image.asset(
+                    'images/item$index.png',
                   ),
                 ),
               ),
             ),
-            expandedHeight: 100,
-            backgroundColor: deepColor,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                'images/item1.png',
-                fit: BoxFit.cover,
-              ),
+            gridDelegate: SliverQuiltedGridDelegate(
+              crossAxisCount: 3,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              repeatPattern: QuiltedGridRepeatPattern.inverted,
+              pattern: [
+                QuiltedGridTile(1, 1),
+                QuiltedGridTile(2, 2),
+                QuiltedGridTile(1, 1),
+                QuiltedGridTile(1, 1),
+                QuiltedGridTile(1, 1),
+              ],
             ),
           ),
-          SliverToBoxAdapter(
-            child: _getProfileHeader(),
-          ),
-          SliverPersistentHeader(
-            delegate: tabBarViewDelegate(),
-            pinned: true,
-            floating: true,
-          ),
-        ],
-        body: Container(
-          color: Colors.red,
         ),
-      ),
+      ],
     );
   }
 
@@ -125,36 +187,31 @@ class UserProfileScreen extends StatelessWidget {
   }
 }
 
-class tabBarViewDelegate extends SliverPersistentHeaderDelegate {
+class TabBarViewDelegate extends SliverPersistentHeaderDelegate {
+  //creating Constructor
+  TabBarViewDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     // TODO: implement build
     return Center(
       child: Container(
-        color: Colors.amber,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('Me'),
-            Text('1'),
-            Text('2'),
-            Text('3'),
-            Text('4'),
-            Text('5'),
-          ],
-        ),
+        color: deepColor,
+        child: _tabBar,
       ),
     );
   }
 
   @override
   // TODO: implement maxExtent
-  double get maxExtent => 300;
+  double get maxExtent => _tabBar.preferredSize.height;
 
   @override
   // TODO: implement minExtent
-  double get minExtent => 50;
+  double get minExtent => _tabBar.preferredSize.height;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

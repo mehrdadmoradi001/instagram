@@ -36,8 +36,6 @@ class _ActivityScreenState extends State<ActivityScreen>
                 indicatorWeight: 4,
                 indicatorColor: pinkColor,
                 indicatorPadding: EdgeInsets.symmetric(horizontal: 20),
-                //
-                //
                 tabs: [
                   Tab(
                     text: 'Following',
