@@ -11,6 +11,14 @@ class UserProfileScreen extends StatelessWidget {
       body: NestedScrollView(
         headerSliverBuilder: (context, isScrolled) => [
           SliverAppBar(
+            //toolbarHeight: 100,
+            // pinned: true,
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(right: 18, top: 18),
+                child: Icon(Icons.menu),
+              ),
+            ],
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(14),
               child: Container(
@@ -18,6 +26,7 @@ class UserProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: deepColor,
                   borderRadius: BorderRadius.only(
+                    //
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
@@ -32,7 +41,10 @@ class UserProfileScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-          )
+          ),
+          SliverToBoxAdapter(
+            child: _getProfileHeader(),
+          ),
         ],
         body: Container(
           color: Colors.red,
