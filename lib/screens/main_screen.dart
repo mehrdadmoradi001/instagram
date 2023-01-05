@@ -9,12 +9,13 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int _selectedBottomNavigationBar = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedBottomNavigationBar,
-        onTap: (int index){
+        onTap: (int index) {
           setState(() {
             _selectedBottomNavigationBar = index;
           });
@@ -33,20 +34,36 @@ class _MainScreenState extends State<MainScreen> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.green,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.ice_skating), label: 'Label1'), //
-          BottomNavigationBarItem(icon: Icon(Icons.ice_skating), label: 'Label2'),
-          BottomNavigationBarItem(icon: Icon(Icons.ice_skating), label: 'Label3'),
-          BottomNavigationBarItem(icon: Icon(Icons.ice_skating), label: 'Label4'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.ice_skating), label: 'Label1'), //
+          BottomNavigationBarItem(
+              icon: Icon(Icons.ice_skating), label: 'Label2'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.ice_skating), label: 'Label3'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.ice_skating), label: 'Label4'),
         ],
       ),
-      body: getLayout().elementAt(_selectedBottomNavigationBar),
+      body: IndexedStack(
+        index: _selectedBottomNavigationBar,
+        children: getLayout(),
+      ),
     );
   }
 
-  List<Widget> getLayout()=> <Widget>[
-    Container(color: Colors.red,child: Center(child: TextField()),),
-    Container(color: Colors.blue,),
-    Container(color: Colors.amber,),
-    Container(color: Colors.green,),
-  ];
+  List<Widget> getLayout() => <Widget>[
+        Container(
+          color: Colors.red,
+          child: Center(child: TextField()),
+        ),
+        Container(
+          color: Colors.blue,
+        ),
+        Container(
+          color: Colors.amber,
+        ),
+        Container(
+          color: Colors.green,
+        ),
+      ];
 }
