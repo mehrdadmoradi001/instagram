@@ -37,7 +37,7 @@ class UserProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                expandedHeight: 100,
+                expandedHeight: 200,
                 backgroundColor: deepColor,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Image.asset(
